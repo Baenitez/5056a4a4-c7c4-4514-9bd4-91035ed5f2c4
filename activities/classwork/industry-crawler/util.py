@@ -4,10 +4,8 @@ import time
 
 from difflib import SequenceMatcher
 
-
 def pretty_print(logger):
     pass
-
 
 def timeit(logger):
     def decorator(func):
@@ -46,3 +44,10 @@ class StringWrapper(object):
     @property
     def value(self):
         return self._sensitivity_matching(self._value)
+
+    @Decorators.sensitivity_matching_meta_decorator()
+    def contains(self, pattern, reverse = False):
+        pass
+    @Decorators.sensitivity_matching_meta_decorator()
+    def similarity_ratio(self, pattern):
+        return SequenceMatcher(None, self.value, pattern()).ratio()
