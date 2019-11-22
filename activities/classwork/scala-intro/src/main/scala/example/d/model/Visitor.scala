@@ -1,5 +1,21 @@
 package example.d.model
 
-trait Visitor {
+import example.a.model.Timestamp
 
+trait Visitor {
+  def id: String
+  def createdAt: Timestamp
+  def getAgeInSeconds: Int = createdAt.seconds
+
+  def show(): Unit = this match{
+    case Visitor.Anonymous(id, _) =>
+      println(s"Anonymous user with id $id")
+    case Visitor.User(id, email, createdAt) =>
+      println(s"User with email email $email")
+  }
+}
+
+object Visitor{
+  final case class Anonymous(id: String, createdAt: Timestamp) extends Visitor
+  final case class User(id: String, email: String, createdAt: Timestamp) extends Visitor
 }
