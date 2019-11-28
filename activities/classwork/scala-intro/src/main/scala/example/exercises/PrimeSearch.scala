@@ -20,5 +20,4 @@ object PrimeSearch {
 
     println(start, end)
   }
-
 }
