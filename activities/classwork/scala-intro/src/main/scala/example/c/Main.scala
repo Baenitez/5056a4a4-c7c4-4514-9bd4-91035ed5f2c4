@@ -1,17 +1,12 @@
 package example.c
-
 import example.c.model.Box
-
 object Main {
+  val numbers: list[Int] = List(1,2,3,4,5)
 
-  def procedure(args: Array[Int]): Box[Int] =
-    args.map(num => Box(num)).foldRight(Box(0)) {
-      case (elm, z) => z.concat(elm).map(_.toInt)
+  def procedure: Box[Int] =
+    numbers.map(num=> Box(num)).foldRight(Box(0)) {
+      case (elm, z) => z.concate(elm).map(_.toInt)
     }
-
-  def main(args: Array[String]): Unit = args match {
-    case valid if args.length > 0 => procedure(args.map(_.toInt)).show()
-    case _ => println("Invalid argument.")
+  def main(args: Array[String]): Unit= args match{
+    case valid if args.length > => procedure(args.map(_.toInt)).show()
   }
-
-}
